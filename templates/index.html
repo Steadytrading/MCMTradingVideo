@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>XAUUSD TikTok Generator</title>
+  <style>
+    body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial; background: #070a12; color: #eaeef7; }
+    .wrap { max-width: 820px; margin: 0 auto; padding: 32px 18px; }
+    .card { background: #0d1220; border: 1px solid #1b2440; border-radius: 16px; padding: 22px; box-shadow: 0 10px 30px rgba(0,0,0,.35); }
+    h1 { margin: 0 0 6px; font-size: 28px; }
+    p { margin: 0 0 18px; color: #b8c2d8; line-height: 1.45; }
+    label { display: block; margin: 14px 0 8px; color: #cfd7ea; }
+    input, select { width: 100%; font-size: 20px; padding: 14px 14px; border-radius: 12px; border: 1px solid #233055; background: #0a0f1d; color: #eaeef7; outline: none; }
+    input::placeholder { color: #6e7aa0; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    @media (max-width: 640px){ .grid{ grid-template-columns: 1fr; } }
+    button { margin-top: 14px; width: 100%; font-size: 18px; padding: 14px 16px; border-radius: 12px; border: 1px solid #3b4a7a; background: linear-gradient(180deg, #f6d46b, #c79b2e); color: #1a1406; font-weight: 800; cursor: pointer; }
+    .hint { margin-top: 14px; font-size: 13px; color: #93a0c4; }
+    .error { margin-top: 12px; padding: 12px 14px; background: #2a0f14; border: 1px solid #6b1f2e; border-radius: 12px; color: #ffb3c0; }
+    .footer { margin-top: 18px; font-size: 12px; color: #7f8bb0; display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+    .tag { display:inline-block; padding: 2px 8px; border: 1px solid #223055; border-radius: 999px; margin-right: 6px; color:#b8c2d8; }
+    a { color: #f6d46b; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>XAUUSD TikTok Generator</h1>
+      <p>Viral “Live trade result”-stil: <span class="tag">ENTRY → TP HIT</span> + session-tag + watermark.</p>
+
+      {% if error %}
+        <div class="error">{{ error }}</div>
+      {% endif %}
+
+      <form method="post" action="/generate">
+        <div class="grid">
+          <div>
+            <label for="profit">Dagens profit (%)</label>
+            <input id="profit" name="profit" placeholder="Ex: 4.12" inputmode="decimal" />
+          </div>
+          <div>
+            <label for="session">Session</label>
+            <select id="session" name="session">
+              <option value="london" selected>London session</option>
+              <option value="ny">NY session</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit">Generate video</button>
+      </form>
+
+      <div class="hint">
+        Tips: funkar med <span class="tag">4.12</span> <span class="tag">+4.12</span> <span class="tag">4,12</span>
+      </div>
+
+      <div class="footer">
+        <span>Watermark i videon: <b>{{ handle }}</b></span>
+        <span>Landing: <b>{{ landing }}</b></span>
+        <span>Öppna: <a href="https://{{ landing }}" target="_blank" rel="noreferrer">https://{{ landing }}</a></span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
