@@ -16,7 +16,7 @@ FPS = 20                           # lower CPU/RAM pressure
 SECONDS = 5
 
 TITLE = "XAUUSD LIVE TRADE"
-SUBTITLE = "Today's Result"
+SUBTITLE = "Yesterday's Result"
 FOLLOW = "Follow for daily XAUUSD profits"
 
 def load_font(name, size):
